@@ -1,0 +1,42 @@
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+h1 {
+    color: orange;
+    text-align: center;
+}
+
+#todos-container > article {
+    height: 4rem;
+    width: 20rem;
+    border: 0.5rem solid orange;
+    padding: 0.5rem;
+    margin: 1rem;
+}
+
+article:hover {
+    background-color: orange;
+    color: white;
+    cursor: pointer; 
+}
+
+span {
+    color: orange;
+}
+
+#todos-container {
+    margin-top: 1rem;
+    border: 0.3rem dotted orange;
+    border-radius: 0.5rem;
+}
+
+input.todo-input {
+    margin-top: 2rem;
+}

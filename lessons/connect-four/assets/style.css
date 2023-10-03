@@ -1,0 +1,30 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+/* 
+div {
+} */
+
+#game-board {
+    width: 70vw;
+    height: 70vw;
+    display: flex;
+    border: solid 1px black;  
+    background-color: rgba(144, 144, 144, 1)
+}
+
+.col {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+}
+
+.cell {
+    height: 25%;
+    border: solid 1px black;
+    border-radius: 50%;
+}

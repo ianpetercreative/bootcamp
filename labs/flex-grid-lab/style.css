@@ -1,0 +1,88 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Helvetica;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(40, 96, 93);
+    font-size: 12px;
+    font-weight: 400;
+    text-align: center;
+}
+
+#vert-profile {
+    height: 350px;
+    width: 225px;
+    background-color: white;
+    position: relative;
+    top: 100px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 40% 20% 25% 15%;
+}
+
+.flex-ctr {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+span {
+    position: absolute;
+    top: 5px;
+    right: 8px;
+    font-size: 0.5rem;
+    color: rgb(200, 200, 200);
+}
+
+/* img {
+    width: 50px;
+} */
+
+#headshot {
+    width: 75px;
+    border: solid 3px rgb(127, 205, 141);
+    border-radius: 50%;
+}
+
+div {
+    grid-column: span 2;
+}
+
+#rating {
+    background-color: rgb(240, 240, 240);
+}
+
+.contact {
+    grid-column: span 1;
+    color: white;
+}
+
+#name {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+#phone {
+    background-color: rgb(127, 205, 141);
+}
+
+#messages {
+    background-color: rgb(113, 185, 118);
+}
+
+#cost {
+    font-size: 1rem;
+}
+
+.horz-profile {
+    width: 350px;
+    height: 225px;
+    background-color: white;
+    position: relative;
+}
