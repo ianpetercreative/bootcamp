@@ -1,0 +1,30 @@
+body {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+div {
+    /* temporary working style  */
+    border: solid 1px red; 
+}
+
+.flex-ctr {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#game-board {
+    width: 75vw;
+    height: 75vw;
+    background-color: rgb(231, 205, 135);
+    border: solid 5px rgba(231, 205, 135, 0.693);
+    border-radius: 5%;
+}
+
+.rows {
+    height: 100%;
+    
+}
