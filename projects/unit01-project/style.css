@@ -4,6 +4,7 @@ body {
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
+    font-family: Helvetica, sans-serif;
 }
 
 #table {
@@ -26,11 +27,12 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: rgb(230, 198, 141);
 }
 
-div {
+/* div {
     border: solid 1px white; 
-}
+} */
 
 .row {
     height: 100%;
@@ -43,9 +45,63 @@ div {
 .square {
     height: 100%; 
     width: 100%;
-    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .unplayable {
-    background-color: black;
+    background-color: rgb(94, 70, 54);
+}
+
+.black-puck {
+    width: 70%;
+    height: 70%;
+    background-color: black; 
+    border: solid 0.25em white;
+    border-radius: 50%;
+    cursor: pointer; 
+}
+
+.red-puck {
+    width: 70%;
+    height: 70%;
+    background-color: red;
+    border: solid 0.25em white;
+    border-radius: 50%;
+    cursor: pointer; 
+}
+
+.red-king {
+    cursor: pointer; 
+    width: 70%;
+    height: 70%;
+    background-color: aqua;
+    border: solid 0.25em white;
+    border-radius: 50%;
+}
+
+.black-king {
+    cursor: pointer; 
+    width: 70%;
+    height: 70%;
+    background-color: purple; 
+    border: solid 0.25em white;
+    border-radius: 50%;
+}
+
+.movable-puck {
+    background-color: rgb(94, 174, 255);
+    /* border: solid 0.25em rgb(57, 155, 252); */
+    background-size: 50%;
+    /* transition: ease-in-out; */
+}
+
+.destination {
+    background-color: rgba(60, 208, 109, 0.5);
+    cursor: pointer;
+}
+
+.possible-jumped-puck {
+    background-color: rgba(245, 0, 0, 0.5)
 }
