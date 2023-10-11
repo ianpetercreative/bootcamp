@@ -19,16 +19,29 @@ const playerTurnMsg = document.getElementById('player-turn');
 
 
 /*----- state variables -----*/
+// const gameBoard = [
+//   // starting game state 
+//   [null, -1, null, -1, null, -1, null, -1],
+//   [-1, null, -1, null, -1, null, -1, null],
+//   [null, -1, null, -1, null, -1, null, -1],
+//   [0, null, 0, null, 0, null, 0, null],
+//   [null, 0, null, 0, null, 0, null, 0],
+//   [1, null, 1, null, 1, null, 1, null],
+//   [null, 1, null, 1, null, 1, null, 1],
+//   [1, null, 1, null, 1, null, 1, null],
+// ];
+
+// checking king functionality 
 const gameBoard = [
   // I'll need to investigate further the values of these places on the board to deny movement into the unplayable squares 
-  [null, -1, null, -1, null, -1, null, -1],
-  [-1, null, -1, null, -1, null, -1, null],
-  [null, -1, null, -1, null, -1, null, -1],
-  [0, null, 0, null, 0, null, 0, null],
   [null, 0, null, 0, null, 0, null, 0],
-  [1, null, 1, null, 1, null, 1, null],
-  [null, 1, null, 1, null, 1, null, 1],
-  [1, null, 1, null, 1, null, 1, null],
+  [0, null, 0, null, 1, null, 0, null],
+  [null, -2, null, 0, null, 0, null, 0],
+  [0, null, 0, null, 0, null, 0, null],
+  [null, 2, null, 0, null, , null, 0],
+  [0, null, 0, null, 0, null, 0, null],
+  [null, 0, null, 0, null, -1, null, 0],
+  [0, null, 0, null, 0, null, 0, null],
 ];
 
 // how to track the king [2, -2]
@@ -39,8 +52,8 @@ const playerTwo = [-1, -2];
 
 let playerTurn = 1;
 
-// let playerPucks = [];
-// let playerKings = [];
+let playerPucks = [];
+let playerKings = [];
 
 let winner = null;
 
@@ -88,10 +101,9 @@ gameBoardEl.addEventListener('click', function (evt) {
       possibleJumps = [];  
       jumpsAvailable = []; 
 
-      checkForKing();
-      checkForWinner();
+      checkForKings();
       changePlayer();
-      render(); 
+      checkForWinner();
     } else {
 
   
@@ -102,10 +114,9 @@ gameBoardEl.addEventListener('click', function (evt) {
       movablePucks = [];
   
   
-      checkForKing();
-      checkForWinner();
+      checkForKings();
       changePlayer();
-      render();
+      checkForWinner();
     }
   } else {
     // The click was not on a destination square, so deselect the selected puck (if any).
@@ -167,6 +178,7 @@ function render() {
     }
   }
   // display player turn 
+  // checkForWinner(); 
   playerTurnMsg.textContent = `Player ${playerTurn}'s Turn`
   checkForMoves(playerTurn);
 }
@@ -179,24 +191,26 @@ function changePlayer() {
 
 // invoke remaining pucks and legal moves to determine a winner 
 function checkForWinner() {
+  playerPucks = getAllPlayerPucks(playerTurn); 
+  playerKings = getAllPlayerKings(playerTurn)
   // once a player is out of chips
   
-  const currentPlayerPucks = (getAllPlayerPucks(playerTurn * -1)).length + (getAllPlayerKings(playerTurn * -1)).length;
+  const currentPlayerPucks = playerPucks.length + playerKings.length
+  console.log(currentPlayerPucks)
   // console.log(currentPlayerPucks)
   if (currentPlayerPucks === 0) {
-    winner = playerTurn;
+    winner = playerTurn * -1;
     playerTurnMsg.textContent = `Player ${winner} wins!`
+  } else {
+    render(); 
   }
 
 }
 
 
-// create an array at the beginning of each player's turn listing their remaining pucks 
-
-
-
 
 function getAllPlayerPucks(player) {
+  playerPucks = []; 
   gameBoard.forEach((row, rowIdx) => {
     row.forEach((squareValue, colIdx) => {
       if (squareValue === player) {
@@ -208,6 +222,7 @@ function getAllPlayerPucks(player) {
 }
 
 function getAllPlayerKings(player) {
+  playerKings = []; 
   gameBoard.forEach((row, rowIdx) => {
     row.forEach((squareValue, colIdx) => {
       if (squareValue === player * 2) {
@@ -511,8 +526,6 @@ function highlightDestination(row, col) {
 
   // make sure to invoke the neessary functions: 
   // checkForWinner();
-  // checkForKing();
-  // render();
   // changePlayer();
 }
 
@@ -559,18 +572,20 @@ function jumpPuck(selectedPuck, oldRow, oldCol, newRow, newCol, jumpedRow, jumpe
 }
 
 
-
-
-
-function checkForKing() {
+function checkForKings() {
   // check for either player's "pucks" reaching a square opposite their starting end 
   // apply visual update 
-  // update move capability for that piece 
-}
+  for (let i = 0; i < gameBoard[0].length; i++) {
+    if (gameBoard[0][i] === 1) {
+      gameBoard[0][i] = 2; 
+    }
+  }
 
-
-function handleCapturedPieces() {
-  // when a player jumps an opponent's puck, remove that piece from the game
+  for (let i = 0; i < gameBoard[7].length; i++){
+    if (gameBoard[7][i] === -1) {
+      gameBoard[7][i] = -2; 
+    }
+  }
 }
 
 

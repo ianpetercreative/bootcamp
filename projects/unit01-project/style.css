@@ -66,7 +66,7 @@ body {
 .red-puck {
     width: 70%;
     height: 70%;
-    background-color: red;
+    background-color: rgb(255, 0, 0);
     border: solid 0.25em white;
     border-radius: 50%;
     cursor: pointer; 
@@ -76,7 +76,7 @@ body {
     cursor: pointer; 
     width: 70%;
     height: 70%;
-    background-color: aqua;
+    background-color: rgb(215, 29, 29);
     border: solid 0.25em white;
     border-radius: 50%;
 }
