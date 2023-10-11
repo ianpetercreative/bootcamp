@@ -32,18 +32,31 @@ const playerTurnMsg = document.getElementById('player-turn');
 // ];
 
 // checking king functionality 
+// const gameBoard = [
+//   // I'll need to investigate further the values of these places on the board to deny movement into the unplayable squares 
+//   [null, 0, null, 0, null, 0, null, 0],
+//   [0, null, 0, null, 1, null, 0, null],
+//   [null, -2, null, 0, null, 0, null, 0],
+//   [0, null, 0, null, 0, null, 0, null],
+//   [null, 2, null, 0, null, , null, 0],
+//   [0, null, 0, null, 0, null, 0, null],
+//   [null, 0, null, 0, null, -1, null, 0],
+//   [0, null, 0, null, 0, null, 0, null],
+// ];
+
+
+// checking multijump functionality
 const gameBoard = [
   // I'll need to investigate further the values of these places on the board to deny movement into the unplayable squares 
   [null, 0, null, 0, null, 0, null, 0],
+  [0, null, 0, null, 0, null, 0, null],
+  [null, 0, null, -1, null, 0, null, 0],
+  [0, null, 0, null, 0, null, 0, null],
+  [null, 0, null, -1, null, , null, 0],
+  [0, null, 0, null, 0, null, 0, null],
+  [null, 0, null, -1, null, 0, null, 0],
   [0, null, 0, null, 1, null, 0, null],
-  [null, -2, null, 0, null, 0, null, 0],
-  [0, null, 0, null, 0, null, 0, null],
-  [null, 2, null, 0, null, , null, 0],
-  [0, null, 0, null, 0, null, 0, null],
-  [null, 0, null, 0, null, -1, null, 0],
-  [0, null, 0, null, 0, null, 0, null],
 ];
-
 // how to track the king [2, -2]
 // whose piece is this? positive or negative 
 
@@ -170,10 +183,12 @@ function render() {
         const redKing = document.createElement('div')
         redKing.setAttribute("class", "red-king")
         square.appendChild(redKing)
+        // square.classList.add('king-container')
       } else if (squareValue === -2) {
         const blackKing = document.createElement('div');
         blackKing.setAttribute("class", "black-king");
         square.appendChild(blackKing);
+        // square.classList.add('king-container')
       }
     }
   }

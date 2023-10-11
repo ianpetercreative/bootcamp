@@ -1,5 +1,5 @@
 body {
-    display: flex; 
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -9,10 +9,10 @@ body {
 
 #table {
     width: 75vh;
-    height: 75vh; 
+    height: 75vh;
     background-color: rgb(231, 205, 135);
     border: solid 5px rgb(172, 153, 99);
-    padding: 4px; 
+    padding: 4px;
     border-radius: 3%;
     display: flex;
     justify-content: center;
@@ -36,14 +36,14 @@ body {
 
 .row {
     height: 100%;
-    width: 100%; 
-    display: flex; 
+    width: 100%;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .square {
-    height: 100%; 
+    height: 100%;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -57,38 +57,49 @@ body {
 .black-puck {
     width: 70%;
     height: 70%;
-    background-color: black; 
+    background-color: rgb(30, 30, 30);
     border: solid 0.25em white;
     border-radius: 50%;
-    cursor: pointer; 
+    cursor: pointer;
 }
 
 .red-puck {
     width: 70%;
     height: 70%;
-    background-color: rgb(255, 0, 0);
-    border: solid 0.25em white;
-    border-radius: 50%;
-    cursor: pointer; 
-}
-
-.red-king {
-    cursor: pointer; 
-    width: 70%;
-    height: 70%;
     background-color: rgb(215, 29, 29);
     border: solid 0.25em white;
     border-radius: 50%;
+    cursor: pointer;
+}
+
+.red-king, .black-king {
+    cursor: pointer;
+    width: 70%;
+    height: 70%;
+    border: solid 0.25em white;
+    border-radius: 50%;
+    position: relative;
+
+    &::after {
+        content: '';
+        background-image: url('/assets/crown-white.png');
+        background-size: 70% 70%;
+        position: absolute;
+        background-position: center;
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+    }
 }
 
 .black-king {
-    cursor: pointer; 
-    width: 70%;
-    height: 70%;
-    background-color: purple; 
-    border: solid 0.25em white;
-    border-radius: 50%;
+    background-color: rgb(17, 17, 17);
 }
+
+.red-king {
+    background-color: rgb(174, 29, 29);
+}
+
 
 .movable-puck {
     background-color: rgb(94, 174, 255);
@@ -104,4 +115,9 @@ body {
 
 .possible-jumped-puck {
     background-color: rgba(245, 0, 0, 0.5)
+}
+
+.overlay {
+    background-image: url('./assets/crown-white.png');
+    /* width: 50%; */
 }
