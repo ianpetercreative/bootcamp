@@ -4,11 +4,31 @@ body {
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-    font-family: Helvetica, sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
-h1, h2, h3, p {
+h1, h2, h3 {
     text-align: center;
+    margin: 0 auto; 
+}
+
+h1 {
+    font-size: 40px;
+    margin: 20px auto 0;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 28px;
+    margin: 0 auto;
+    font-weight: 700;
+    color: white;
+}
+
+h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 20px auto;
 }
 
 #table {
@@ -131,7 +151,7 @@ h1, h2, h3, p {
     position: fixed; 
     width: 30%;
     height: 20%;
-    background-color: rgb(223, 223, 223);
+    background-color: rgb(38, 38, 38);
     border: solid 3px black;
     padding: 10px; 
     margin: auto;
@@ -144,7 +164,7 @@ h1, h2, h3, p {
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    animation: fadeIn 0.5s;
+    animation: fadeIn 1s;
 }
 
 
@@ -154,6 +174,24 @@ h1, h2, h3, p {
 }
 
 button {
-    display: block;
-    margin: 16px 0 16px;
+        /* margin: 16px 0 16px; */
+        font-size: 16px;
+        padding: 0.5em 1em; 
+        color: white;
+        background-color: transparent;
+        border: solid 2px white;
+        border-radius: 5px;
+}
+
+button:hover {
+    transition: 0.25s;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    /* border-color: white; */
+}
+
+.blur {
+    transition: 0.5s;
+    filter: blur(5px);
 }

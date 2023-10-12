@@ -4,17 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
     <title>Document</title>
     <script defer src="./js/script.js"></script>
 </head>
 
 <body>
-    <h1>Checkers</h1>
+    <h1 id="title">Checkers</h1>
     <h3 id="player-turn"></h3>
     <div id="winner-popup">
         <h2 id="winner-msg">Red Wins!</h2>
-        <p>Would you like to play again?</p>
         <button onclick="window.location.reload()">Play again</button>
     </div>
     <main id="table">
