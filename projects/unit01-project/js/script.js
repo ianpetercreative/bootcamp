@@ -26,18 +26,30 @@ const playerTurnMsg = document.getElementById('player-turn');
 // ];
 
 // checking win functionality 
+// const gameBoard = [
+//   // I'll need to investigate further the values of these places on the board to deny movement into the unplayable squares 
+//   [null, 0, null, 0, null, 0, null, 0],
+//   [0, null, 0, null, 0, null, 0, null],
+//   [null, 0, null, 0, null, 0, null, 0],
+//   [0, null, -1, null, 0, null, 0, null],
+//   [null, 2, null, 0, null, , null, 0],
+//   [0, null, 0, null, 0, null, 0, null],
+//   [null, 0, null, 0, null, 0, null, 0],
+//   [0, null, 0, null, 0, null, 0, null],
+// ];
+
+//checking king functionality
 const gameBoard = [
   // I'll need to investigate further the values of these places on the board to deny movement into the unplayable squares 
   [null, 0, null, 0, null, 0, null, 0],
+  [0, null, 0, null, 1, null, 0, null],
+  [null, -2, null, 0, null, 0, null, 0],
   [0, null, 0, null, 0, null, 0, null],
-  [null, 0, null, 0, null, 0, null, 0],
-  [0, null, -1, null, 0, null, 0, null],
-  [null, 2, null, 0, null, , null, 0],
+  [null, 2, null, 0, null, 0, null, 0],
   [0, null, 0, null, 0, null, 0, null],
-  [null, 0, null, 0, null, 0, null, 0],
+  [null, 0, null, -1, null, 0, null, 0],
   [0, null, 0, null, 0, null, 0, null],
 ];
-
 
 // checking multijump functionality
 // const gameBoard = [
@@ -82,12 +94,16 @@ let moveToCol = null;
 // 2. click listener for the chosen location 
 // 3. Activate movePiece funtion 
 
-gameBoardEl.addEventListener('click', function (evt) {
+gameBoardEl.addEventListener('click', function clickHandler (evt) {
   const clickedEl = evt.target;
   const clickedElParent = clickedEl.parentElement;
   const rowIdx = parseInt(clickedElParent.dataset.row);
   const colIdx = parseInt(clickedElParent.dataset.col);
-
+  
+  if (winner) {
+    return;
+  }
+  
   if (clickedElParent.className.includes('movable-puck')) {
     clearDestinationHighlights();
     destinations = [];
@@ -101,14 +117,12 @@ gameBoardEl.addEventListener('click', function (evt) {
     if (jumpsAvailable.length > 0 || multiJumps.length > 0) {
       clearDestinationHighlights();
       jumpPuck(selectedPuck, selectedPuckRow, selectedPuckCol, moveToRow, moveToCol)
-      // render();
 
       movablePucks = [];
       possibleJumps = [];
       jumpsAvailable = [];
 
       checkForKings();
-      // changePlayer();
       checkForWinner();
     } else {
 
@@ -125,9 +139,7 @@ gameBoardEl.addEventListener('click', function (evt) {
       checkForWinner();
     }
   } else {
-    // The click was not on a destination square, so deselect the selected puck (if any).
 
-    // Clear the destination highlights.
     clearDestinationHighlights();
     destinations = [];
     selectedPuck = null;
@@ -135,16 +147,12 @@ gameBoardEl.addEventListener('click', function (evt) {
     selectedPuckCol = null;
     movablePucks = [];
 
-    // Implement logic to deselect the selected puck (if any).
-    // You should clear any selected puck variable here.
-
-    // Re-render the board to remove any active puck selection (optional).
     render();
   }
 
 
 
-  // checkForMoves(playerTurn, rowIdx, colIdx);
+
 })
 
 
@@ -206,6 +214,7 @@ function checkForWinner() {
 
   const currentPlayerPucks = playerPucks.length + playerKings.length
   if (currentPlayerPucks === 0) {
+
     winner = playerTurn * -1;
     if (winner === 1) {
       playerTurnMsg.textContent = `Red wins!`
@@ -214,10 +223,10 @@ function checkForWinner() {
       playerTurnMsg.textContent = `Black wins!`
 
     }
-    gameBoardEl.removeEventListener('click', )
+    return true; 
 
   } else {
-    render();
+    render(); 
   }
 
 }
