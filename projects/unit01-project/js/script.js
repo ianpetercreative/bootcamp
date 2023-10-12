@@ -8,35 +8,35 @@ const rowEls = [...gameBoardEl.querySelectorAll('.row')];
 
 const playerTurnMsg = document.getElementById('player-turn');
 
-
-
+const winnerPopup = document.getElementById('winner-popup'); 
+const winnerMsg = document.getElementById('winner-msg');
 
 
 /*----- state variables -----*/
-const gameBoard = [
-  // starting game state 
-  [null, -1, null, -1, null, -1, null, -1],
-  [-1, null, -1, null, -1, null, -1, null],
-  [null, -1, null, -1, null, -1, null, -1],
-  [0, null, 0, null, 0, null, 0, null],
-  [null, 0, null, 0, null, 0, null, 0],
-  [1, null, 1, null, 1, null, 1, null],
-  [null, 1, null, 1, null, 1, null, 1],
-  [1, null, 1, null, 1, null, 1, null],
-];
+// const gameBoard = [
+//   // starting game state 
+//   [null, -1, null, -1, null, -1, null, -1],
+//   [-1, null, -1, null, -1, null, -1, null],
+//   [null, -1, null, -1, null, -1, null, -1],
+//   [0, null, 0, null, 0, null, 0, null],
+//   [null, 0, null, 0, null, 0, null, 0],
+//   [1, null, 1, null, 1, null, 1, null],
+//   [null, 1, null, 1, null, 1, null, 1],
+//   [1, null, 1, null, 1, null, 1, null],
+// ];
 
 // checking win functionality 
-// const gameBoard = [
-//   // I'll need to investigate further the values of these places on the board to deny movement into the unplayable squares 
-//   [null, 0, null, 0, null, 0, null, 0],
-//   [0, null, 0, null, 0, null, 0, null],
-//   [null, 0, null, 0, null, 0, null, 0],
-//   [0, null, -1, null, 0, null, 0, null],
-//   [null, 2, null, 0, null, , null, 0],
-//   [0, null, 0, null, 0, null, 0, null],
-//   [null, 0, null, 0, null, 0, null, 0],
-//   [0, null, 0, null, 0, null, 0, null],
-// ];
+const gameBoard = [
+  // I'll need to investigate further the values of these places on the board to deny movement into the unplayable squares 
+  [null, 0, null, 0, null, 0, null, 0],
+  [0, null, 0, null, 0, null, 0, null],
+  [null, 0, null, 0, null, 0, null, 0],
+  [0, null, -1, null, 0, null, 0, null],
+  [null, 2, null, 0, null, , null, 0],
+  [0, null, 0, null, 0, null, 0, null],
+  [null, 0, null, 0, null, 0, null, 0],
+  [0, null, 0, null, 0, null, 0, null],
+];
 
 //checking king functionality
 // const gameBoard = [
@@ -217,10 +217,11 @@ function checkForWinner() {
 
     winner = playerTurn * -1;
     if (winner === 1) {
-      playerTurnMsg.textContent = `Red wins!`
+      winnerMsg.textContent = `Red wins!`
+      winnerPopup.style.display = "flex";
 
     } else if (winner === -1) {
-      playerTurnMsg.textContent = `Black wins!`
+      winnerMsg.textContent = `Black wins!`
 
     }
     return true; 
